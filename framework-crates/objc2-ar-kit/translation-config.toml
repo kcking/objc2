@@ -1,0 +1,22 @@
+framework = "ARKit"
+crate = "objc2-ar-kit"
+required-crates = ["objc2", "objc2-foundation"]
+maccatalyst = "14.0"
+ios = "11.0"
+visionos = "1.0"
+
+
+class.ARQuickLookPreviewItem.skipped = true
+class.ARReferenceImage.skipped = true
+class.ARSCNView.skipped = true
+protocol.ARSCNView.skipped = true
+protocol.ARSCNViewDelegate.skipped = true
+protocol.ARSKViewDelegate.skipped = true
+class.ARSCNPlaneGeometry.skipped = true
+class.ARSCNFaceGeometry.skipped = true
+class.ARSKView.skipped = true
+protocol.SCNDebugOptions.skipped = true
+protocol.SCNSceneRenderer.skipped = true
+typedef.ARSCNDebugOptions.skipped = true
+static.ARSCNDebugOptionShowWorldOrigin.skipped = true
+static.ARSCNDebugOptionShowFeaturePoints.skipped = true

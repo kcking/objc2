@@ -62,6 +62,8 @@ impl Location {
 
             // int8_t, int16_t etc., translated to i8, i16 etc.
             "_stdint" => "__builtin__".into(),
+            // "simd" => "__builtin__".into(),
+            // name if name.starts_with("simd.") => "__builtin__".into(),
             // Implementation of the above
             "DarwinFoundation.types.machine_types" => "__builtin__".into(),
 

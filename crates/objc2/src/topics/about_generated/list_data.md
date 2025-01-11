@@ -1,5 +1,6 @@
 | Framework | Crate | Documentation |
 | --- | --- | --- |
+| `ARKit` | [![`objc2-ar-kit`](https://badgen.net/crates/v/objc2-ar-kit)](https://crates.io/crates/objc2-ar-kit) | [![docs.rs](https://docs.rs/objc2-ar-kit/badge.svg)](https://docs.rs/objc2-ar-kit/) |
 | `AVFAudio` | [![`objc2-avf-audio`](https://badgen.net/crates/v/objc2-avf-audio)](https://crates.io/crates/objc2-avf-audio) | [![docs.rs](https://docs.rs/objc2-avf-audio/badge.svg)](https://docs.rs/objc2-avf-audio/) |
 | `AVFoundation` | [![`objc2-av-foundation`](https://badgen.net/crates/v/objc2-av-foundation)](https://crates.io/crates/objc2-av-foundation) | [![docs.rs](https://docs.rs/objc2-av-foundation/badge.svg)](https://docs.rs/objc2-av-foundation/) |
 | `AVKit` | [![`objc2-av-kit`](https://badgen.net/crates/v/objc2-av-kit)](https://crates.io/crates/objc2-av-kit) | [![docs.rs](https://docs.rs/objc2-av-kit/badge.svg)](https://docs.rs/objc2-av-kit/) |
@@ -90,3 +91,4 @@
 | `Virtualization` | [![`objc2-virtualization`](https://badgen.net/crates/v/objc2-virtualization)](https://crates.io/crates/objc2-virtualization) | [![docs.rs](https://docs.rs/objc2-virtualization/badge.svg)](https://docs.rs/objc2-virtualization/) |
 | `Vision` | [![`objc2-vision`](https://badgen.net/crates/v/objc2-vision)](https://crates.io/crates/objc2-vision) | [![docs.rs](https://docs.rs/objc2-vision/badge.svg)](https://docs.rs/objc2-vision/) |
 | `WebKit` | [![`objc2-web-kit`](https://badgen.net/crates/v/objc2-web-kit)](https://crates.io/crates/objc2-web-kit) | [![docs.rs](https://docs.rs/objc2-web-kit/badge.svg)](https://docs.rs/objc2-web-kit/) |
+| `simd` | [![`objc2-simd`](https://badgen.net/crates/v/objc2-simd)](https://crates.io/crates/objc2-simd) | [![docs.rs](https://docs.rs/objc2-simd/badge.svg)](https://docs.rs/objc2-simd/) |

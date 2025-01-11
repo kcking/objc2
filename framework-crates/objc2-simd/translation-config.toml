@@ -1,0 +1,10 @@
+framework = "simd"
+crate = "objc2-simd"
+modulemap = "usr/include/simd/module.modulemap"
+required-crates = ["objc2", "objc2-foundation"]
+maccatalyst = "13.0"
+ios = "4.0"
+visionos = "1.0"
+macos = "10.3"
+watchos = "2.0"
+tvos = "9.0"

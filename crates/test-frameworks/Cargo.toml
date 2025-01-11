@@ -12,6 +12,8 @@ release = false
 
 [features]
 test-frameworks = [
+    "dep:objc2-ar-kit",
+    "objc2-ar-kit/all",
     "dep:objc2-avf-audio",
     "objc2-avf-audio/all",
     "dep:objc2-av-foundation",
@@ -194,6 +196,8 @@ test-frameworks = [
     "objc2-vision/all",
     "dep:objc2-web-kit",
     "objc2-web-kit/all",
+    "dep:objc2-simd",
+    "objc2-simd/all",
 ]
 
 [dependencies]
@@ -232,6 +236,11 @@ objc2-store-kit = { path = "../../framework-crates/objc2-store-kit", optional = 
 objc2-symbols = { path = "../../framework-crates/objc2-symbols", optional = true }
 objc2-uniform-type-identifiers = { path = "../../framework-crates/objc2-uniform-type-identifiers", optional = true }
 objc2-user-notifications = { path = "../../framework-crates/objc2-user-notifications", optional = true }
+objc2-simd = { path = "../../framework-crates/objc2-simd", optional = true }
+
+[target.'cfg(any(target_os = "ios", target_os = "visionos"))'.dependencies]
+objc2-ar-kit = { path = "../../framework-crates/objc2-ar-kit", optional = true }
+objc2-event-kit-ui = { path = "../../framework-crates/objc2-event-kit-ui", optional = true }
 
 [target.'cfg(any(target_os = "macos", target_os = "ios"))'.dependencies]
 objc2-accounts = { path = "../../framework-crates/objc2-accounts", optional = true }
@@ -302,9 +311,6 @@ objc2-core-motion = { path = "../../framework-crates/objc2-core-motion", optiona
 objc2-event-kit = { path = "../../framework-crates/objc2-event-kit", optional = true }
 objc2-health-kit = { path = "../../framework-crates/objc2-health-kit", optional = true }
 objc2-local-authentication = { path = "../../framework-crates/objc2-local-authentication", optional = true }
-
-[target.'cfg(any(target_os = "ios", target_os = "visionos"))'.dependencies]
-objc2-event-kit-ui = { path = "../../framework-crates/objc2-event-kit-ui", optional = true }
 
 [target.'cfg(any(target_os = "macos", target_os = "ios", target_os = "watchos"))'.dependencies]
 objc2-nearby-interaction = { path = "../../framework-crates/objc2-nearby-interaction", optional = true }
