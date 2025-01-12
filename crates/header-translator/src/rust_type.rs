@@ -458,6 +458,10 @@ pub enum Ty {
         element_type: Box<Self>,
         num_elements: usize,
     },
+    RustArray {
+        element_type: Box<Self>,
+        num_elements: usize,
+    },
     Enum {
         id: ItemIdentifier,
         ty: Box<Self>,
@@ -485,6 +489,44 @@ pub enum Ty {
     },
 }
 
+fn parse_ext_vector_type(name: &str) -> Option<Ty> {
+    // Match patterns like: "__attribute__((ext_vector_type(2))) int"
+    // or "int __attribute__((ext_vector_type(4)))"
+    let re = regex::Regex::new(r"(.*).* __attribute__.*ext_vector_type\((\d+)\).*").unwrap();
+
+    if let Some(captures) = re.captures(name) {
+        if let (Some(size), Some(primitive)) = (captures.get(2), captures.get(1)) {
+            let primitive = primitive.as_str();
+            if let Ok(n) = size.as_str().parse::<usize>() {
+                let ty = match primitive {
+                    "float" => Primitive::Float,
+                    "double" => Primitive::Double,
+                    "uint" | "unsigned int" => Primitive::UInt,
+                    "int" => Primitive::Int,
+                    "short" => Primitive::Short,
+                    "ushort" | "unsigned short" => Primitive::UShort,
+                    "uchar" | "unsigned char" => Primitive::UChar,
+                    "char" => Primitive::Char,
+                    "long" => Primitive::Long,
+                    "ulong" | "unsigned long" => Primitive::ULong,
+                    "half" => Primitive::I16,
+                    "_Float16" => Primitive::I16,
+
+                    _ => {
+                        error!("Unhandled ext_vector_type primtiive {primitive}");
+                        return None;
+                    }
+                };
+                return Some(Ty::RustArray {
+                    element_type: Box::new(Ty::Primitive(ty)),
+                    num_elements: n,
+                });
+            }
+        }
+    }
+    None
+}
+
 impl Ty {
     fn parse(attributed_ty: Type<'_>, mut lifetime: Lifetime, context: &Context<'_>) -> Self {
         let mut ty = attributed_ty;
@@ -492,6 +534,13 @@ impl Ty {
 
         let mut attributed_name = attributed_ty.get_display_name();
         let mut name = ty.get_display_name();
+        // If name contains ext_vector_type attribute, parse it separately
+        if name.contains("ext_vector_type") {
+            if let Some(vector_ty) = parse_ext_vector_type(&name) {
+                return vector_ty;
+            }
+        }
+
         let mut unexposed_nullability = None;
         let mut no_escape = false;
 
@@ -1198,6 +1247,7 @@ impl Ty {
                 items
             }
             Self::Array { element_type, .. } => element_type.required_items(),
+            Self::RustArray { element_type, .. } => element_type.required_items(),
             Self::Enum { id, ty } => {
                 let mut items = ty.required_items();
                 items.push(id.clone());
@@ -1273,6 +1323,9 @@ impl Ty {
             }
             Self::TypeDef { to, .. } => to.requires_mainthreadmarker(self_requires),
             Self::Array { element_type, .. } => {
+                element_type.requires_mainthreadmarker(self_requires)
+            }
+            Self::RustArray { element_type, .. } => {
                 element_type.requires_mainthreadmarker(self_requires)
             }
             Self::Enum { ty, .. } => ty.requires_mainthreadmarker(self_requires),
@@ -1529,6 +1582,10 @@ impl Ty {
                     "ArrayUnknownABI<[{}; {num_elements}]>",
                     element_type.plain()
                 ),
+                Self::RustArray {
+                    element_type,
+                    num_elements,
+                } => write!(f, "[{}; {num_elements}]", element_type.plain()),
                 Self::Struct { id, .. } => {
                     write!(f, "{}", id.path())
                 }

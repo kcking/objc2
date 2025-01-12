@@ -458,7 +458,6 @@ version = "0.2.2"
 dependencies = [
  "bitflags",
  "block2",
- "dispatch2",
  "objc2",
  "objc2-av-foundation",
  "objc2-core-foundation",

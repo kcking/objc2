@@ -20,3 +20,19 @@ protocol.SCNSceneRenderer.skipped = true
 typedef.ARSCNDebugOptions.skipped = true
 static.ARSCNDebugOptionShowWorldOrigin.skipped = true
 static.ARSCNDebugOptionShowFeaturePoints.skipped = true
+
+
+# because of skipped dispatch_queue_t
+class.ARSession.methods.delegateQueue.skipped = true
+class.ARSession.methods."setDelegateQueue:".skipped = true
+
+# becuase of skipped ARReferenceImage
+class.ARGeoTrackingConfiguration.methods."setDetectionImages:".skipped = true
+class.ARGeoTrackingConfiguration.methods.detectionImages.skipped = true
+class.ARWorldTrackingConfiguration.methods.detectionImages.skipped = true
+class.ARWorldTrackingConfiguration.methods."setDetectionImages:".skipped = true
+class.ARImageTrackingConfiguration.methods.trackingImages.skipped = true
+class.ARImageTrackingConfiguration.methods."setTrackingImages:".skipped = true
+class.ARBodyTrackingConfiguration.methods."setDetectionImages:".skipped = true
+class.ARBodyTrackingConfiguration.methods.detectionImages.skipped = true
+class.ARImageAnchor.methods.referenceImage.skipped = true

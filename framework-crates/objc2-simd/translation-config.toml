@@ -8,3 +8,24 @@ visionos = "1.0"
 macos = "10.3"
 watchos = "2.0"
 tvos = "9.0"
+
+typedef.simd_ulong2.skipped = true
+typedef.simd_ulong3.skipped = true
+typedef.simd_ulong4.skipped = true
+typedef.simd_ulong8.skipped = true
+typedef.vector_ulong2.skipped = true
+typedef.vector_ulong3.skipped = true
+typedef.vector_ulong4.skipped = true
+typedef.vector_ulong8.skipped = true
+
+typedef.simd_long2.skipped = true
+typedef.simd_long3.skipped = true
+typedef.simd_long4.skipped = true
+typedef.simd_long8.skipped = true
+typedef.vector_long2.skipped = true
+typedef.vector_long3.skipped = true
+typedef.vector_long4.skipped = true
+typedef.vector_long8.skipped = true
+
+typedef.simd_half1.skipped = true
+typedef.vector_half1.skipped = true

@@ -18,7 +18,6 @@ workspace = true
 [dependencies]
 bitflags = { version = "2.5.0", default-features = false, optional = true }
 block2 = { path = "../../crates/block2", version = "0.5.1", default-features = false, optional = true, features = ["alloc"] }
-dispatch2 = { path = "../../crates/dispatch2", version = "0.1.0", default-features = false, optional = true, features = ["alloc", "objc2"] }
 objc2 = { path = "../../crates/objc2", version = "0.5.2", default-features = false, features = ["std"] }
 objc2-av-foundation = { path = "../objc2-av-foundation", version = "0.2.2", default-features = false, optional = true }
 objc2-core-foundation = { path = "../objc2-core-foundation", version = "0.2.2", default-features = false, optional = true, features = ["objc2"] }
@@ -47,8 +46,7 @@ default = ["std"]
 std = ["alloc", "bitflags?/std"]
 alloc = []
 bitflags = ["dep:bitflags", "objc2-av-foundation?/bitflags", "objc2-core-foundation?/bitflags", "objc2-core-media?/bitflags", "objc2-core-video?/bitflags", "objc2-foundation/bitflags", "objc2-metal?/bitflags", "objc2-quartz-core?/bitflags", "objc2-ui-kit?/bitflags"]
-block2 = ["dep:block2", "dispatch2?/block2", "objc2-av-foundation?/block2", "objc2-core-foundation?/block2", "objc2-core-location?/block2", "objc2-core-media?/block2", "objc2-core-video?/block2", "objc2-foundation/block2", "objc2-metal?/block2", "objc2-quartz-core?/block2", "objc2-ui-kit?/block2", "objc2-vision?/block2"]
-dispatch2 = ["dep:dispatch2"]
+block2 = ["dep:block2", "objc2-av-foundation?/block2", "objc2-core-foundation?/block2", "objc2-core-location?/block2", "objc2-core-media?/block2", "objc2-core-video?/block2", "objc2-foundation/block2", "objc2-metal?/block2", "objc2-quartz-core?/block2", "objc2-ui-kit?/block2", "objc2-vision?/block2"]
 objc2-av-foundation = ["dep:objc2-av-foundation"]
 objc2-core-foundation = ["dep:objc2-core-foundation", "objc2-av-foundation?/objc2-core-foundation", "objc2-foundation/objc2-core-foundation", "objc2-metal?/objc2-core-foundation", "objc2-quartz-core?/objc2-core-foundation", "objc2-ui-kit?/objc2-core-foundation", "objc2-vision?/objc2-core-foundation"]
 objc2-core-location = ["dep:objc2-core-location", "objc2-ui-kit?/objc2-core-location"]
@@ -340,7 +338,6 @@ all = [
     "ARWorldMap",
     "bitflags",
     "block2",
-    "dispatch2",
     "objc2-av-foundation",
     "objc2-core-foundation",
     "objc2-core-location",
